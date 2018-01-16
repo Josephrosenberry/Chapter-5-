@@ -1,44 +1,55 @@
 /**
- * A bank account class with methods to deposit to, withdraw from, of the account.
+ * A bank account class with methods to deposit to, withdraw from, change the name on,
+ * and get a String representation
+ * of the account.
  * @author Joseph Rosenberry
- * @version 1/11/2018
+ * @version 1/16/2018
  */
-public class Account
+public class Account3
 {
     private double balance;
     private String name;
     private int acctNum;
+    private static int nextAccountNum = 1000;
+    
     /**
      * Creates an account method that takes a double and a string variable which represents
      * the initial balance and owner name
      * @param initBal - Initial balance of the account
      * @param owner - Name of the account
      */
-    public Account (double initBal, String owner)
+    public Account3 (double initBal, String owner)
     {
         balance = initBal;
         name = owner;
-        acctNum =  (int)(Math.random() * 8999) + 1000;
+        acctNum = nextAccountNum++;
     }
 
+    /**
+     * Method to return nextNum 
+     */
+    public static int getNextNum(){
+        return nextAccountNum;
+    }
+    
     /**
      * initializes account number and owner name and balance
      * @param initBal - Initial balance of the account
      * @param owner - name of the account
      * @param number - Account number of the account
      */
-    public Account(double initBal, String owner, int number)
+    public Account3(double initBal, String owner, int number)
     {
         balance = initBal;
         name = owner;
-        acctNum = number;
+        acctNum = nextAccountNum++;
     }
 
     /**
      * Initializes the account with someones name
-     * @param owner - Name of the account number;
+     * @param owner = name;
      */
-    public Account(String owner){
+    public Account3(String owner){
         name = owner;
         balance = 0;
         acctNum =  (int)(Math.random() * 8999) + 1000;
@@ -62,8 +73,8 @@ public class Account
 
     /**
      * a method to initializes the amount and fee and deduct the amount from the balance
-     * @param amount Amount set to the account
-     * @param fee Fee % deducted for each account
+     * @param amount - Amount set to the account
+     * @param fee - Fee % for each account
      */
     public void withdraw (double amount, double fee)
     {
@@ -87,7 +98,7 @@ public class Account
     }
 
     /**
-     * returns the balance for each account
+     * Returns balance of each account
      * @return balance 
      */
     public double getBalance()
@@ -97,7 +108,6 @@ public class Account
 
     /**
      * obtains and returns account name
-     * @return name of owner
      */
     public String getName()
     {
@@ -106,9 +116,12 @@ public class Account
 
     /**
      * toString method to return a print statement of the accounts number, balance, and owner name
-     * @return balance, acctNum, name
+     * @return balance
+     * @return acctNum
+     * @return name
+     * @return nextAccountNum;
      */
     public String toString(){
-        return name + "'s account number is " + acctNum + ". Balance is $" + String.format("%.2f",balance) + "\n";
+        return name + "'s account number is " + acctNum + ". Balance is $" + String.format("%.2f",balance) + "\n" + "Next id number is " + nextAccountNum;
     }
 }

@@ -1,3 +1,9 @@
+/**
+ * Driver class that creates accounts with a balance, an owner name, and an
+ * id number and can deposit or withdraw money
+ * @author Joseph Rosenberry
+ * @version 1/16/2018
+ */
 public class AccountTest{
     
     public static void main (String [] args){
