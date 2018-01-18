@@ -114,6 +114,11 @@ public class Account3
         return name;
     }
 
+    public void transfer (Account acct, double amount){
+        amount -= acct.getBalance();
+    }
+        
+    
     /**
      * toString method to return a print statement of the accounts number, balance, and owner name
      * @return balance
