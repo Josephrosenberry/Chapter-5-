@@ -22,7 +22,9 @@ public class Account3
     {
         balance = initBal;
         name = owner;
-        acctNum = nextAccountNum++;
+        acctNum = nextAccountNum;
+        nextAccountNum++;
+       
     }
 
     /**
@@ -113,9 +115,17 @@ public class Account3
     {
         return name;
     }
-
-    public void transfer (Account acct, double amount){
-        amount -= acct.getBalance();
+    
+    /**
+     * transfers an amount from one account to another and subtracts the amount
+     * @param acct Account being deposited too
+     * @param amount Amount being deposited into the account
+     */
+    public void transfer (Account3 acct, double amount){
+        balance -= amount;
+        acct.balance += amount;
+        System.out.println("Transferred " + amount + " from " + 
+        this.name + "'s account to " + acct.name + "'s account.");
     }
         
     
@@ -127,6 +137,17 @@ public class Account3
      * @return nextAccountNum;
      */
     public String toString(){
-        return name + "'s account number is " + acctNum + ". Balance is $" + String.format("%.2f",balance) + "\n" + "Next id number is " + nextAccountNum;
+        return name + "'s account number is " + acctNum + ". Balance is $" + String.format("%.2f",balance);
+    }
+    
+    /**
+     * Method that takes two accounts and transfers one of their amounts to the other
+     * @param acct1 Account #1 that includes a name and balanced and ID Number
+     * @param acct2 Account #2 that includes a name and balanced and ID Number
+     * @param amount Amount being withdrawn from one account and deposited into another
+     */
+    public static void transfer (Account3 acct1, Account3 acct2, double amount) {
+        acct1.withdraw(amount);
+        acct2.deposit(amount);
     }
 }
