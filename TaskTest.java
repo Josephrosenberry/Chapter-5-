@@ -1,3 +1,4 @@
+import java.util.*;
 public class TaskTest{
     
     Task t1 = new Task("Eat");
@@ -6,6 +7,7 @@ public class TaskTest{
     Task t4 = new Task("Exercise");
     Task t5 = new Task("WatchTV");
     
+    t2.setPriority(Priority.MIN_PRIORITY);
     
     
 }
